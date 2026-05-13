@@ -141,35 +141,35 @@
           </div>
         </div>
       </div>
-
-      <!-- Overlay móvil -->
-      <div
-        id="mobile-menu-overlay"
-        class="mobile-menu-overlay fixed inset-0 bg-black/50 z-40 lg:hidden"
-      ></div>
-
-      <!-- Panel menú móvil -->
-      <div
-        id="mobile-menu"
-        class="mobile-menu fixed top-0 right-0 h-full w-72 z-50 lg:hidden"
-        style="background: rgba(15, 23, 42, 0.97); backdrop-filter: blur(16px)"
-      >
-        <div class="pt-20 px-4 flex flex-col gap-2">
-          <a href="#inicio" class="mobile-nav-link">🏠 Inicio</a>
-          <a href="#video" class="mobile-nav-link">🎬 Video</a>
-          <a href="#seccion-1" class="mobile-nav-link"
-            >🦴 El Despertar del Conteo</a
-          >
-          <a href="#seccion-2" class="mobile-nav-link">🧮 El Ábaco</a>
-          <a href="#seccion-3" class="mobile-nav-link">⚙️ Ingenio Mecánico</a>
-          <a href="#seccion-4" class="mobile-nav-link">🧩 Alan Turing</a>
-          <a href="#seccion-5" class="mobile-nav-link">🖥️ Konrad Zuse</a>
-          <a href="#seccion-6" class="mobile-nav-link"
-            >📱 Computación Moderna</a
-          >
-        </div>
-      </div>
     </nav>
+
+    <!-- ======== MENÚ MÓVIL (fuera del nav para evitar conflicto con backdrop-filter) ======== -->
+    <!-- Overlay móvil -->
+    <div
+      id="mobile-menu-overlay"
+      class="mobile-menu-overlay fixed inset-0 bg-black/60 lg:hidden"
+      style="z-index: 998"
+    ></div>
+
+    <!-- Panel menú móvil -->
+    <div
+      id="mobile-menu"
+      class="mobile-menu fixed top-0 right-0 h-full w-72 lg:hidden"
+      style="z-index: 999; background: #0f172a"
+    >
+      <div class="pt-20 px-4 flex flex-col gap-3">
+        <a href="#inicio" class="mobile-nav-link">🏠 Inicio</a>
+        <a href="#video" class="mobile-nav-link">🎬 Video</a>
+        <a href="#seccion-1" class="mobile-nav-link"
+          >🦴 El Despertar del Conteo</a
+        >
+        <a href="#seccion-2" class="mobile-nav-link">🧮 El Ábaco</a>
+        <a href="#seccion-3" class="mobile-nav-link">⚙️ Ingenio Mecánico</a>
+        <a href="#seccion-4" class="mobile-nav-link">🧩 Alan Turing</a>
+        <a href="#seccion-5" class="mobile-nav-link">🖥️ Konrad Zuse</a>
+        <a href="#seccion-6" class="mobile-nav-link">📱 Computación Moderna</a>
+      </div>
+    </div>
 
     <!-- ======== HERO / PORTADA ======== -->
     <section
