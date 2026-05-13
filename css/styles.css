@@ -1,0 +1,428 @@
+/* ============================================================
+   EL VIAJE DE LOS NÚMEROS — Estilos Custom
+   Dianneth Castrillón Benitez · Universidad de Cartagena · 2026
+   ============================================================ */
+
+/* --- Variables de color (paleta vibrante para niños) --- */
+:root {
+  --color-green-soft: #f0fdf4;
+  --color-blue-soft: #eff6ff;
+  --color-navbar: rgba(30, 41, 59, 0.85);
+  --color-title-from: #f97316;
+  --color-title-to: #eab308;
+  --color-btn-from: #a855f7;
+  --color-btn-to: #7c3aed;
+  --color-fun-fact-bg: #fef9c3;
+  --color-fun-fact-border: #eab308;
+  --color-footer: #0f172a;
+  --color-text: #1e293b;
+  --color-accent: #84cc16;
+}
+
+/* --- Reset suave --- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+/* --- Marca de agua (portada como fondo) --- */
+.watermark-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  background: url('../images/portada.jpeg') center center / cover no-repeat fixed;
+  opacity: 0.07;
+  pointer-events: none;
+}
+
+/* --- Partículas flotantes --- */
+.particle {
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  font-weight: 700;
+  color: var(--color-btn-from);
+  animation: floatParticle var(--duration, 12s) var(--delay, 0s) infinite ease-in-out;
+  user-select: none;
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--max-opacity, 0.12);
+  }
+  90% {
+    opacity: var(--max-opacity, 0.12);
+  }
+  100% {
+    transform: translateY(-10vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* --- Animaciones de scroll reveal --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* --- Efecto glow para el título principal --- */
+@keyframes titleGlow {
+  0%, 100% {
+    text-shadow:
+      0 0 10px rgba(249, 115, 22, 0.4),
+      0 0 20px rgba(234, 179, 8, 0.2);
+    filter: brightness(1);
+  }
+  50% {
+    text-shadow:
+      0 0 20px rgba(249, 115, 22, 0.6),
+      0 0 40px rgba(234, 179, 8, 0.4),
+      0 0 60px rgba(168, 85, 247, 0.2);
+    filter: brightness(1.1);
+  }
+}
+
+.title-glow {
+  animation: titleGlow 3s ease-in-out infinite;
+}
+
+/* --- Efecto hover suave en tarjetas --- */
+.card-hover {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.12),
+    0 8px 16px rgba(168, 85, 247, 0.1);
+}
+
+/* --- Imagen de sección --- */
+.section-img {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.5s ease;
+  border-radius: 1.25rem;
+}
+
+.section-img:hover {
+  transform: scale(1.04) rotate(1deg);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Caja "¿Sabías que...?" --- */
+.fun-fact {
+  background: var(--color-fun-fact-bg);
+  border-left: 5px solid var(--color-fun-fact-border);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  position: relative;
+}
+
+.fun-fact::before {
+  content: '💡';
+  position: absolute;
+  top: -14px;
+  left: 12px;
+  font-size: 1.5rem;
+  background: var(--color-fun-fact-bg);
+  padding: 0 4px;
+  border-radius: 50%;
+}
+
+/* --- Botón de actividad didáctica --- */
+.btn-activity {
+  background: linear-gradient(135deg, var(--color-btn-from), var(--color-btn-to));
+  color: white;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-activity:hover {
+  transform: scale(1.07);
+  box-shadow: 0 8px 24px rgba(168, 85, 247, 0.35);
+  filter: brightness(1.1);
+}
+
+.btn-activity:active {
+  transform: scale(0.97);
+}
+
+/* --- Menú hamburguesa --- */
+.mobile-menu {
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+.mobile-menu-overlay {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --- Hamburger icon animación --- */
+.hamburger-line {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger.active .hamburger-line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* --- Navbar dinámica --- */
+.navbar-scrolled {
+  background: rgba(15, 23, 42, 0.95) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Video container responsive --- */
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.2),
+    0 0 0 4px rgba(168, 85, 247, 0.3);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* --- Número de capítulo decorativo --- */
+.chapter-number {
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--color-btn-from), var(--color-title-from));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0.15;
+  position: absolute;
+  top: -10px;
+  left: -5px;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* --- Sección CTA Hero --- */
+.hero-cta {
+  background: linear-gradient(135deg, #f97316, #eab308);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  font-weight: 800;
+  font-size: 1.15rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  animation: bounceGentle 2s ease-in-out infinite;
+}
+
+.hero-cta:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(249, 115, 22, 0.4);
+}
+
+@keyframes bounceGentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* --- Sección de contenido colores alternos --- */
+.section-green {
+  background: linear-gradient(180deg, #f0fdf4 0%, #ecfdf5 100%);
+}
+
+.section-blue {
+  background: linear-gradient(180deg, #eff6ff 0%, #e0f2fe 100%);
+}
+
+/* --- Botón mute --- */
+.btn-mute {
+  background: none;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+  font-size: 1.1rem;
+}
+
+.btn-mute:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* --- Scrollbar personalizada --- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-btn-from), var(--color-btn-to));
+  border-radius: 10px;
+}
+
+/* --- Tipografía divertida para títulos --- */
+.font-title {
+  font-family: 'Fredoka One', 'Nunito', cursive, system-ui, sans-serif;
+}
+
+/* --- Sección Hero overlay gradiente --- */
+.hero-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.7) 0%,
+    rgba(30, 58, 95, 0.6) 30%,
+    rgba(88, 28, 135, 0.5) 60%,
+    rgba(15, 23, 42, 0.7) 100%
+  );
+}
+
+/* --- Nav link hover --- */
+.nav-link {
+  position: relative;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.3s ease;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.nav-link:hover {
+  color: #fbbf24;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #f97316, #eab308);
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* --- Mobile nav link --- */
+.mobile-nav-link {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 0.75rem;
+  transition: background 0.2s;
+}
+
+.mobile-nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Footer estilo --- */
+.footer-gradient {
+  background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
+}
+
+/* --- Delays de animación escalonados --- */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
